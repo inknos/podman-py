@@ -3,7 +3,7 @@
 import base64
 import collections.abc
 import json
-from typing import Dict, List, Mapping, Optional, Union, Any
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 def prepare_filters(filters: Union[str, List[str], Mapping[str, str]]) -> Optional[str]:

@@ -3,7 +3,7 @@
 import json
 import logging
 from datetime import datetime
-from typing import Any, Dict, Optional, Union, Iterator
+from typing import Any, Dict, Iterator, Optional, Union
 
 from podman import api
 from podman.api.client import APIClient

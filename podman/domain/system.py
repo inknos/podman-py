@@ -3,8 +3,8 @@
 import logging
 from typing import Any, Dict, Optional
 
-from podman.api.client import APIClient
 from podman import api
+from podman.api.client import APIClient
 
 logger = logging.getLogger("podman.system")
 

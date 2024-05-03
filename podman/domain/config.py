@@ -1,10 +1,10 @@
 """Read containers.conf file."""
 
+import json
 import sys
 import urllib
 from pathlib import Path
 from typing import Dict, Optional
-import json
 
 import xdg.BaseDirectory
 

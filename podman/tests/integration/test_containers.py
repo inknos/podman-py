@@ -1,8 +1,8 @@
 import io
 import random
 import tarfile
-import unittest
 import tempfile
+import unittest
 
 try:
     # Python >= 3.10
@@ -16,7 +16,6 @@ from podman import PodmanClient
 from podman.domain.containers import Container
 from podman.domain.images import Image
 from podman.errors import NotFound
-
 
 # @unittest.skipIf(os.geteuid() != 0, 'Skipping, not running as root')
 

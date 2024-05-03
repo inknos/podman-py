@@ -1,7 +1,6 @@
 import getpass
-import unittest
-
 import time
+import unittest
 
 from podman import PodmanClient
 from podman.tests.integration import base, utils

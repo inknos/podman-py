@@ -5,6 +5,7 @@ import json
 import logging
 import urllib.parse
 from typing import Any, Dict, Generator, Iterator, List, Mapping, Optional, Union
+
 import requests
 
 from podman import api
@@ -18,10 +19,10 @@ from podman.errors import APIError, ImageNotFound
 
 try:
     from rich.progress import (
-        Progress,
-        TextColumn,
         BarColumn,
+        Progress,
         TaskProgressColumn,
+        TextColumn,
         TimeRemainingColumn,
     )
 except (ImportError, ModuleNotFoundError):

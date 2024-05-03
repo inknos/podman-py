@@ -10,16 +10,14 @@ import pathlib
 import random
 import socket
 import subprocess
+import time
 import urllib.parse
 from contextlib import suppress
 from typing import Optional, Union
 
-import time
-import xdg.BaseDirectory
-
 import urllib3
 import urllib3.connection
-
+import xdg.BaseDirectory
 from requests.adapters import DEFAULT_POOLBLOCK, DEFAULT_RETRIES, HTTPAdapter
 
 from .adapter_utils import _key_normalizer

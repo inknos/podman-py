@@ -1,5 +1,6 @@
 """Mixin for Image build support."""
 
+import itertools
 import json
 import logging
 import pathlib
@@ -9,11 +10,9 @@ import shutil
 import tempfile
 from typing import Any, Dict, Iterator, List, Tuple
 
-import itertools
-
 from podman import api
 from podman.domain.images import Image
-from podman.errors import BuildError, PodmanError, ImageNotFound
+from podman.errors import BuildError, ImageNotFound, PodmanError
 
 logger = logging.getLogger("podman.images")
 

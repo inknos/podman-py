@@ -13,15 +13,15 @@
 #   under the License.
 #
 """Integration Test Utils"""
+
 import logging
 import os
 import shutil
 import subprocess
 import threading
+import time
 from contextlib import suppress
 from typing import List, Optional
-
-import time
 
 from podman.tests import errors
 
@@ -97,9 +97,7 @@ class PodmanLauncher:
         def consume(line: str):
             logger.debug(line.strip("\n") + f" refid={self.reference_id}")
 
-        self.proc = subprocess.Popen(
-            self.cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
-        )  # pylint: disable=consider-using-with
+        self.proc = subprocess.Popen(self.cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         threading.Thread(target=consume_lines, args=[self.proc.stdout, consume]).start()
 
         if not check_socket:

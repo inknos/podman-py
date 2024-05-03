@@ -3,12 +3,11 @@
 import pathlib
 import random
 import shutil
+import sys
 import tarfile
 import tempfile
 from fnmatch import fnmatch
 from typing import BinaryIO, List, Optional
-
-import sys
 
 
 def prepare_containerignore(anchor: str) -> List[str]:

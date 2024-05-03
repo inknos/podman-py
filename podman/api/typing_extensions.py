@@ -11,14 +11,13 @@ import collections
 import collections.abc as collections_abc
 import contextlib
 import operator
+import sys
 import typing
 
 # These are used by Protocol implementation
 # We use internal typing helpers here, but this significantly reduces
 # code duplication. (Also this is only until Protocol is in typing.)
-from typing import Generic, Callable, TypeVar, Tuple
-
-import sys
+from typing import Callable, Generic, Tuple, TypeVar
 
 # After PEP 560, internal typing API was substantially reworked.
 # This is especially important for Protocol class which uses internal APIs
@@ -31,7 +30,7 @@ else:
     from typing import GenericMeta, TypingMeta
 OLD_GENERICS = False
 try:
-    from typing import _type_vars, _next_in_mro, _type_check
+    from typing import _next_in_mro, _type_check, _type_vars
 except ImportError:
     OLD_GENERICS = True
 try:
@@ -1604,6 +1603,7 @@ elif PEP_560:
                 def meth(self) -> T:
                     ...
         """
+
         __slots__ = ()
         _is_protocol = True
 

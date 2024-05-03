@@ -1,6 +1,6 @@
 """Utility functions for working with Adapters."""
 
-from typing import NamedTuple, Mapping
+from typing import Mapping, NamedTuple
 
 
 def _key_normalizer(key_class: NamedTuple, request_context: Mapping) -> Mapping:
