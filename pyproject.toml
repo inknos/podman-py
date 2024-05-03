@@ -1,3 +1,77 @@
+[build-system]
+# Any changes should be copied into requirements.txt, setup.cfg, and/or test-requirements.txt
+requires = ["hatchling"] # or setuptools>=61.0.0
+build-backend = "hatchling.build" # or setuptools.build_meta
+
+[project]
+name = "podman"
+version = "5.0.0" # TODO can be dynamic = [ "version" ]
+description = "Bindings for Podman RESTful API"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = { paths = ["LICENSE"] }
+requires-python = ">=3.6"
+authors = [
+    { name = "Brent Baude" },
+    { name = "Jhon Honce", email = "jhonce@redhat.com" },
+    { name = "Urvashi Mohnani" },
+]
+keywords = [
+    "libpod",
+    "podman",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "pyxdg >=0.26", # TODO replace with os
+    "requests >=2.24",
+    "sphinx", # TODO hatch new --init didn't add this line
+    "tomli>=1.2.3; python_version<'3.11'",
+    "urllib3",
+]
+
+[project.optional-dependencies]
+progress_bar = [
+    "rich >= 12.5.1",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/containers/podman-py/issues"
+Homepage = "https://github.com/containers/podman-py"
+"Libpod API" = "https://docs.podman.io/en/latest/_static/api.html"
+
+[tool.hatch.version]
+path = "podman/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/podman",
+]
+# to run a test environment, use `hatch shell`
+# and not use virtualenv anymore
+[tool.hatch.envs.default]
+dependencies = [
+    "black",
+    "coverage",
+    "fixtures",
+    "pylint",
+    "pytest",
+    "requests-mock >= 1.11.0",
+    "tox",
+]
+
 [tool.black]
 line-length = 100
 skip-string-normalization = true
@@ -19,12 +93,6 @@ exclude = '''
 [tool.isort]
 profile = "black"
 line_length = 100
-[build-system]
-# Any changes should be copied into requirements.txt, setup.cfg, and/or test-requirements.txt
-requires = [
-    "setuptools>=46.4",
-]
-build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 log_cli = true
 log_cli_level = "DEBUG"
