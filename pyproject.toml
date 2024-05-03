@@ -63,39 +63,71 @@ include = [
 # and not use virtualenv anymore
 [tool.hatch.envs.default]
 dependencies = [
-    "black",
     "coverage",
-    "fixtures",
-    "pylint",
+    "pre-commit",
     "pytest",
     "requests-mock >= 1.11.0",
-    "tox",
+    "ruff",
 ]
+[tool.hatch.envs.default.scripts]
+test-cov = "coverage run -m pytest"
+cov-report = "coverage report -m --skip-covered --fail-under=80 --omit=podman/tests/* --omit=.tox/*"
+# This environment has multiple python envs
+[tool.hatch.envs.test]
+[[tool.hatch.envs.test.matrix]]
+python = ["3.9", "3.11", "3.12"]
 
-[tool.black]
-line-length = 100
-skip-string-normalization = true
-preview = true
-target-version = ["py36"]
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.tox
-  | \.venv
-  | \.history
-  | build
-  | dist
-  | docs
-  | hack
-)/
-'''
-[tool.isort]
-profile = "black"
-line_length = 100
 [tool.pytest.ini_options]
 log_cli = true
 log_cli_level = "DEBUG"
 log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
+[tool.ruff]
+line-length = 100
+[tool.ruff.format]
+exclude = [
+    ".git",
+    ".venv",
+    ".history",
+    "build",
+    "dist",
+    "docs",
+    "hack",
+]
+quote-style = "preserve"
+[tool.ruff.lint]
+select = [
+    # More stuff here https://docs.astral.sh/ruff/rules/
+    "F", # Pyflakes
+    "E", # Pycodestyle Error
+    "W", # Pycodestyle Warning
+    "N", # PEP8 Naming
+    # TODO "UP", # Pyupgrade
+    # TODO "ANN",
+    # TODO "S", # Bandit
+    # "B", # Bugbear
+    "A", # flake-8-builtins
+    "YTT", # flake-8-2020
+    "PLC", # Pylint Convention
+    "PLE", # Pylint Error
+    "PLW", # Pylint Warning
+]
+ignore = [
+    "F821", # TODO Undefined name
+    "F541", # TODO f-string is missing placeholders
+    "F401", # TODO Module imported but unused
+    "F841", # TODO Local variable is assigned to but never used
+    "E402", # TODO Module level import not at top of file
+    "E741", # TODO ambiguous variable name
+    "E722", # TODO do not use bare 'except'
+    "E501", # TODO line too long
+    "N818", # TODO Error Suffix in exception name
+    "N80", # TODO Invalid Name
+    "ANN10", # Missing type annotation
+    "PLW2901", # TODO Redefined Loop Name
+]
+[tool.ruff.lint.per-file-ignores]
+"podman/tests/*.py" = ["S"]
+[tool.ruff.lint.flake8-builtins]
+builtins-ignorelist = ["copyright", "all"]
