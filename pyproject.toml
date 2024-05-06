@@ -73,6 +73,7 @@ dependencies = [
 [tool.hatch.envs.default.scripts]
 test-cov = "coverage run -m pytest"
 cov-report = "coverage report -m --skip-covered --fail-under=80 --omit=podman/tests/* --omit=.tox/*"
+test-all = ["test-cov", "cov-report"]
 # This environment has multiple python envs
 [tool.hatch.envs.test]
 [[tool.hatch.envs.test.matrix]]
