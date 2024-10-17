@@ -88,7 +88,10 @@ class ContainersManager(RunMixin, CreateMixin, Manager):
         response = self.client.get("/containers/json", params=params)
         response.raise_for_status()
 
-        return [self.prepare_model(attrs=i) for i in response.json()]
+        container_list = [self.prepare_model(attrs=i) for i in response.json()]
+        for c in container_list:
+            c.reload()
+        return container_list
 
     def prune(self, filters: Mapping[str, str] = None) -> Dict[str, Any]:
         """Delete stopped containers.
