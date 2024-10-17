@@ -52,7 +52,10 @@ class Container(PodmanResource):
     def status(self):
         """Literal["running", "stopped", "exited", "unknown"]: Returns status of container."""
         with suppress(KeyError):
-            return self.attrs["State"]["Status"]
+            try:
+                return self.attrs["State"]["Status"]
+            except TypeError as e:
+                logger.debug(f"Error getting container status: {e}")
         return "unknown"
 
     @property
