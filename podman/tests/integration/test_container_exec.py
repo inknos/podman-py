@@ -51,3 +51,22 @@ class ContainersExecIntegrationTests(base.IntegrationTest):
         self.assertEqual(error_code, 1)
         self.assertEqual(output[0], b'')
         self.assertEqual(output[1], b"ls: nonexistent: No such file or directory\n")
+
+    def test_container_exec_run_demux_stream(self):
+        """Test a failing command with stream and demux argument"""
+        container = self.client.containers.create(self.alpine_image, command=["top"], detach=True)
+        container.start()
+        error_code, output = container.exec_run("ls nonexistent", demux=True, stream=True)
+
+        self.assertEqual(error_code, 1)
+        self.assertEqual(output[0], b'')
+        self.assertEqual(output[1], b"ls: nonexistent: No such file or directory\n")
+
+    def test_container_exec_run_stream(self):
+        """Testing a failing command with stream argument"""
+        container = self.client.containers.create(self.alpine_image, command=["top"], detach=True)
+        container.start()
+        error_code, output = container.exec_run("ls nonexistent", stream=True)
+
+        self.assertEqual(error_code, None)
+        self.assertEqual(next(output), b"ls: nonexistent: No such file or directory\n")
