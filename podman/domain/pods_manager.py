@@ -13,6 +13,8 @@ from podman.errors import APIError
 
 logger = logging.getLogger("podman.pods")
 
+builtin_list = list
+
 
 class PodsManager(Manager):
     """Specialized Manager for Pod resources."""

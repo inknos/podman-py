@@ -34,6 +34,8 @@ except (ImportError, ModuleNotFoundError):
 
 logger = logging.getLogger("podman.images")
 
+builtin_list = list
+
 
 class ImagesManager(BuildMixin, Manager):
     """Specialized Manager for Image resources."""
