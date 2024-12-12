@@ -55,8 +55,8 @@ class ContainersIntegrationTest(base.IntegrationTest):
         """Test that directories can be mounted with the ``volume`` parameter."""
         with self.subTest("Check bind mount"):
             volumes = {
-                "/etc/hosts": dict(bind="/test_ro", mode='ro'),
-                "/etc/hosts": dict(bind="/test_rw", mode='rw'),  # noqa: F601
+                "/etc/hosts": {"bind": "/test_ro", "mode": "ro"},
+                "/etc/hosts": {"bind": "/test_rw", "mode": "rw"},  # noqa: F601
             }
             container = self.client.containers.create(
                 self.alpine_image, command=["cat", "/test_ro", "/test_rw"], volumes=volumes
@@ -69,14 +69,14 @@ class ContainersIntegrationTest(base.IntegrationTest):
             for directory, mount_spec in volumes.items():
                 self.assertIn(
                     f"{directory}:{mount_spec['bind']}:{mount_spec['mode']},rprivate,rbind",
-                    container.attrs.get('HostConfig', {}).get('Binds', list()),
+                    container.attrs.get('HostConfig', {}).get('Binds', []),
                 )
 
             # check if container can be started and exits with EC == 0
             container.start()
             container.wait()
 
-            self.assertEqual(container.attrs.get('State', dict()).get('ExitCode', 256), 0)
+            self.assertEqual(container.attrs.get('State', {}).get('ExitCode', 256), 0)
 
     def test_container_extra_hosts(self):
         """Test Container Extra hosts"""
@@ -89,7 +89,7 @@ class ContainersIntegrationTest(base.IntegrationTest):
             self.containers.append(proper_container)
             formatted_hosts = [f"{hosts}:{ip}" for hosts, ip in extra_hosts.items()]
             self.assertEqual(
-                proper_container.attrs.get('HostConfig', dict()).get('ExtraHosts', list()),
+                proper_container.attrs.get('HostConfig', {}).get('ExtraHosts', []),
                 formatted_hosts,
             )
 
@@ -120,7 +120,7 @@ class ContainersIntegrationTest(base.IntegrationTest):
             container = self.client.containers.create(self.alpine_image, **parameters)
             self.containers.append(container)
             self.assertEqual(
-                container.attrs.get('HostConfig', dict()).get(host_config_name),
+                container.attrs.get('HostConfig', {}).get(host_config_name),
                 test['expected_value'],
             )
 
@@ -254,14 +254,14 @@ class ContainersIntegrationTest(base.IntegrationTest):
             self.containers.append(container)
             self.assertIn(
                 f"{mount['source']}:{mount['target']}:ro,Z,rprivate,rbind",
-                container.attrs.get('HostConfig', {}).get('Binds', list()),
+                container.attrs.get('HostConfig', {}).get('Binds', []),
             )
 
             # check if container can be started and exits with EC == 0
             container.start()
             container.wait()
 
-            self.assertEqual(container.attrs.get('State', dict()).get('ExitCode', 256), 0)
+            self.assertEqual(container.attrs.get('State', {}).get('ExitCode', 256), 0)
 
         with self.subTest("Check tmpfs mount"):
             mount = {"type": "tmpfs", "source": "tmpfs", "target": "/test", "size": "456k"}

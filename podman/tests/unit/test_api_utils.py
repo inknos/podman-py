@@ -125,9 +125,9 @@ class TestUtilsCase(unittest.TestCase):
             "String": "",
             "Integer": None,
             "Boolean": False,
-            "Dictionary": dict(),
-            "Tuple": tuple(),
-            "List": list(),
+            "Dictionary": {},
+            "Tuple": (),
+            "List": [],
         }
         actual = api.prepare_body(payload)
         self.assertEqual(actual, '{"Boolean": false}')
@@ -139,7 +139,7 @@ class TestUtilsCase(unittest.TestCase):
             "Boolean": False,
             "Dictionary": {"key": "value"},
             "Dictionary2": {"key": {"key2": None}},
-            "Tuple": tuple(),
+            "Tuple": (),
             "List": [None],
             "Set1": {"item1", "item2"},
             "Set2": {None},

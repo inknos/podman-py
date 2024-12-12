@@ -93,7 +93,7 @@ class RegistryDataTestCase(unittest.TestCase):
         )
 
         with self.assertRaises(InvalidArgument):
-            rd.has_platform(list())
+            rd.has_platform([])
 
     def test_platform_500(self):
         rd = RegistryData(
