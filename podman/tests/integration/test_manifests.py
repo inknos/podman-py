@@ -50,7 +50,7 @@ class ManifestsIntegrationTest(base.IntegrationTest):
             self.assertIsInstance(manifest.attrs["manifests"], list)
 
             self.assertTrue(
-                any([d for d in self.alpine_image.attrs["RepoDigests"] if manifest.id in d]),
+                any(d for d in self.alpine_image.attrs["RepoDigests"] if manifest.id in d),
                 f'{manifest.id} not in any {self.alpine_image.attrs["RepoDigests"]}',
             )
 

@@ -186,10 +186,8 @@ class ContainersIntegrationTest(base.IntegrationTest):
 
             self.assertTrue(
                 all(
-                    [
-                        x in port_test['expected_output']
-                        for x in container.attrs.get('HostConfig', {}).get('PortBindings')
-                    ]
+                    x in port_test['expected_output']
+                    for x in container.attrs.get('HostConfig', {}).get('PortBindings')
                 )
             )
 
@@ -210,7 +208,7 @@ class ContainersIntegrationTest(base.IntegrationTest):
             container.start()
             container.wait()
             self.assertTrue(
-                all([opt in b"\n".join(container.logs()).decode() for opt in expected_dns_opt])
+                all(opt in b"\n".join(container.logs()).decode() for opt in expected_dns_opt)
             )
 
     def test_container_healthchecks(self):
@@ -323,11 +321,9 @@ class ContainersIntegrationTest(base.IntegrationTest):
                 path_on_host, path_in_container = device.split(':', 1)
                 self.assertTrue(
                     any(
-                        [
-                            c.get('PathOnHost') == path_on_host
-                            and c.get('PathInContainer') == path_in_container
-                            for c in container_devices
-                        ]
+                        c.get('PathOnHost') == path_on_host
+                        and c.get('PathInContainer') == path_in_container
+                        for c in container_devices
                     )
                 )
 
