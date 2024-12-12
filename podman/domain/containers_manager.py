@@ -2,8 +2,8 @@
 
 import logging
 import urllib
-from typing import Any, Union
 from collections.abc import Mapping
+from typing import Any, Union
 
 from podman import api
 from podman.domain.containers import Container

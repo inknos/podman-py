@@ -1,11 +1,10 @@
 import json
 import pathlib
 import unittest
+from dataclasses import dataclass
 from typing import Any, Optional
 from unittest import mock
 from unittest.mock import mock_open, patch
-
-from dataclasses import dataclass
 
 from podman import api
 

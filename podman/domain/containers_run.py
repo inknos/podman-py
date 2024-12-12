@@ -2,9 +2,9 @@
 
 import logging
 import threading
+from collections.abc import Generator, Iterator
 from contextlib import suppress
 from typing import Union
-from collections.abc import Generator, Iterator
 
 from podman.domain.containers import Container
 from podman.domain.images import Image

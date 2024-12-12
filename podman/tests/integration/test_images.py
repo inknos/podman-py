@@ -24,7 +24,6 @@ from podman import PodmanClient
 from podman.domain.images import Image
 from podman.errors import APIError, ImageNotFound
 
-
 # @unittest.skipIf(os.geteuid() != 0, 'Skipping, not running as root')
 
 

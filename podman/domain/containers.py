@@ -3,9 +3,9 @@
 import json
 import logging
 import shlex
+from collections.abc import Iterable, Iterator, Mapping
 from contextlib import suppress
 from typing import Any, Optional, Union
-from collections.abc import Iterable, Iterator, Mapping
 
 import requests
 

@@ -4,9 +4,9 @@
 import copy
 import logging
 import re
+from collections.abc import MutableMapping
 from contextlib import suppress
 from typing import Any, Union
-from collections.abc import MutableMapping
 
 from podman import api
 from podman.domain.containers import Container

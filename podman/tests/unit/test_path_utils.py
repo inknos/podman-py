@@ -1,6 +1,6 @@
 import os
-import unittest
 import tempfile
+import unittest
 from unittest import mock
 
 from podman import api

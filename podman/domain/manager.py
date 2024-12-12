@@ -2,8 +2,8 @@
 
 from abc import ABC, abstractmethod
 from collections import abc
-from typing import Any, Optional, TypeVar, Union
 from collections.abc import Mapping
+from typing import Any, Optional, TypeVar, Union
 
 from podman.api.client import APIClient
 

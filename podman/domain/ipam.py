@@ -3,8 +3,8 @@
 Provided for compatibility
 """
 
-from typing import Any, Optional
 from collections.abc import Mapping
+from typing import Any, Optional
 
 
 class IPAMPool(dict):

@@ -3,8 +3,8 @@
 import base64
 import collections.abc
 import json
-from typing import Optional, Union, Any
 from collections.abc import Mapping
+from typing import Any, Optional, Union
 
 
 def prepare_filters(filters: Union[str, list[str], Mapping[str, str]]) -> Optional[str]:

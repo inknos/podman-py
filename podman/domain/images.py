@@ -5,6 +5,8 @@ from typing import Any, Optional, Literal, Union
 from collections.abc import Iterator
 
 import urllib.parse
+from collections.abc import Iterator
+from typing import Any, Optional, Union
 
 from podman.api import DEFAULT_CHUNK_SIZE
 from podman.domain.manager import PodmanResource

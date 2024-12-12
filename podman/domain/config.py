@@ -1,10 +1,10 @@
 """Read containers.conf file."""
 
+import json
 import sys
 import urllib
 from pathlib import Path
 from typing import Optional
-import json
 
 from podman.api import cached_property
 from podman.api.path_utils import get_xdg_config_home

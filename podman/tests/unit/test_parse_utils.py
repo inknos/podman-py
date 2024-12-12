@@ -2,9 +2,9 @@ import datetime
 import ipaddress
 import json
 import unittest
+from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Any, Optional
-from collections.abc import Iterable
 from unittest import mock
 
 from requests import Response

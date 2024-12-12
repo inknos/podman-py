@@ -2,9 +2,9 @@
 
 import json
 import logging
+from collections.abc import Iterator
 from datetime import datetime
 from typing import Any, Optional, Union
-from collections.abc import Iterator
 
 from podman import api
 from podman.api.client import APIClient

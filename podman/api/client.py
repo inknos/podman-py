@@ -1,21 +1,21 @@
 """APIClient for connecting to Podman service."""
 
 import json
-import warnings
 import urllib.parse
+import warnings
+from collections.abc import Iterable, Mapping
 from typing import (
+    IO,
     Any,
     ClassVar,
-    IO,
     Optional,
     Union,
 )
-from collections.abc import Iterable, Mapping
 
 import requests
 from requests.adapters import HTTPAdapter
 
-from podman.api.api_versions import VERSION, COMPATIBLE_VERSION
+from podman.api.api_versions import COMPATIBLE_VERSION, VERSION
 from podman.api.ssh import SSHAdapter
 from podman.api.uds import UDSAdapter
 from podman.errors import APIError, NotFound

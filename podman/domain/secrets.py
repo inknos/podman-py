@@ -1,8 +1,8 @@
 """Model and Manager for Secrets resources."""
 
+from collections.abc import Mapping
 from contextlib import suppress
 from typing import Any, Optional, Union
-from collections.abc import Mapping
 
 from podman.api import APIClient
 from podman.domain.manager import Manager, PodmanResource

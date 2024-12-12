@@ -1,11 +1,12 @@
-import unittest
-import urllib.parse
 import json
 import os
 import tempfile
+import unittest
+import urllib.parse
 from pathlib import Path
 from unittest import mock
 from unittest.mock import MagicMock
+
 from podman.domain.config import PodmanConfig
 
 

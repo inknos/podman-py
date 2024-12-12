@@ -4,11 +4,12 @@ import base64
 import ipaddress
 import json
 import struct
+from collections.abc import Iterator
 from datetime import datetime
 from typing import Any, Optional, Union
-from collections.abc import Iterator
 
 from requests import Response
+
 from .output_utils import demux_output
 
 

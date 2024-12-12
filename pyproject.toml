@@ -95,6 +95,7 @@ select = [
     "F", # Pyflakes
     "E", # Pycodestyle Error
     "W", # Pycodestyle Warning
+    "I", # isort
     "N", # PEP8 Naming
     # TODO "D", # pydocstyle # Lots of errors but we definitely need to improve this
     "UP", # Pyupgrade

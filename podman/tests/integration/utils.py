@@ -19,10 +19,9 @@ import os
 import shutil
 import subprocess
 import threading
+import time
 from contextlib import suppress
 from typing import Optional
-
-import time
 
 from podman.tests import errors
 

@@ -7,8 +7,10 @@ import logging
 import os
 import urllib.parse
 from typing import Any, Literal, Optional, Union
-from collections.abc import Iterator, Mapping, Generator
+from collections.abc import Generator, Iterator, Mapping
 from pathlib import Path
+from typing import Any, Optional, Union
+
 import requests
 
 from podman import api
@@ -23,10 +25,10 @@ from podman.errors import APIError, ImageNotFound, PodmanError
 
 try:
     from rich.progress import (
-        Progress,
-        TextColumn,
         BarColumn,
+        Progress,
         TaskProgressColumn,
+        TextColumn,
         TimeRemainingColumn,
     )
 except (ImportError, ModuleNotFoundError):

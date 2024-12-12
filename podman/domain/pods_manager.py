@@ -3,8 +3,8 @@
 import builtins
 import json
 import logging
-from typing import Any, Optional, Union
 from collections.abc import Iterator
+from typing import Any, Optional, Union
 
 from podman import api
 from podman.domain.manager import Manager

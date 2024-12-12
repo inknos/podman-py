@@ -1,8 +1,10 @@
 """Tools for connecting to a Podman service."""
 
+from typing import Literal
+
+from podman.api.api_versions import COMPATIBLE_VERSION, VERSION
 from podman.api.cached_property import cached_property
 from podman.api.client import APIClient
-from podman.api.api_versions import VERSION, COMPATIBLE_VERSION
 from podman.api.http_utils import prepare_body, prepare_filters
 from podman.api.parse_utils import (
     decode_header,
