@@ -103,7 +103,7 @@ select = [
     # TODO "ANN",
     "ASYNC", # flake8-async
     "S", # Bandit
-    # TODO "BLE", # flake8-blind-except
+    "BLE", # flake8-blind-except
     # TODO "FBT", # flake8-boolean-trap # ~30 issues that can be fixed if the API does not break
     "B", # Bugbear
     "A", # flake-8-builtins
