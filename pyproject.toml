@@ -109,7 +109,7 @@ select = [
     "A", # flake-8-builtins
     # TODO "COM", # flake8-commas # many, many, autofixes
     # TODO "CPY", # flake8-copyright
-    # TODO "C4",  # flake8-comprehensions # trivial fixes
+    "C4",  # flake8-comprehensions # trivial fixes
     # TODO "DTZ",  # flake8-datetimez # Couple of errors here
     "T10",  # flake8-debugger
     # TODO "EM",  # flake8-errmsg # Fixes are many but should be easy
