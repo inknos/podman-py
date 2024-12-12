@@ -80,7 +80,7 @@ class Container(PodmanResource):
         Raises:
             NotImplementedError: method not implemented.
         """
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def attach_socket(self, **kwargs):
         """Not Implemented.
@@ -88,7 +88,7 @@ class Container(PodmanResource):
         Raises:
             NotImplementedError: method not implemented.
         """
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def commit(self, repository: str = None, tag: str = None, **kwargs) -> Image:
         """Save container to given repository.

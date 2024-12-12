@@ -127,7 +127,7 @@ select = [
     # TODO "Q",  # flake8-quotes # Probably ignored or fixed as last
     "Q003",  # avoidable-escaped-quote
     "Q004",  # unnecessary-escaped-quote
-    # TODO "RSE",  # flake8-raise # One simple fix
+    "RSE",  # flake8-raise
     "RET",  # flake8-return
     "SLF",  # flake8-self
     "SLOT",  # flake8-slots

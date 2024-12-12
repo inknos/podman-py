@@ -44,7 +44,7 @@ class PodmanLauncher:
         if not podman_exe:
             podman_exe = shutil.which('podman')
         if podman_exe is None:
-            raise errors.PodmanNotInstalled()
+            raise errors.PodmanNotInstalled
 
         self.socket_file: str = socket_uri.replace('unix://', '')
         self.log_level = log_level
