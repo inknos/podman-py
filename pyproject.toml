@@ -125,7 +125,7 @@ select = [
     # TODO "PYI",  # flake8-pyi # Just two easy fixes
     # TODO "PT",  # flake8-pytest-style # This is tricky and it makes ~500 errors that are not easy to fix
     # TODO "Q",  # flake8-quotes # Probably ignored or fixed as last
-    # TODO "Q003",  # avoidable-escaped-quote # One simple fix
+    "Q003",  # avoidable-escaped-quote
     "Q004",  # unnecessary-escaped-quote
     # TODO "RSE",  # flake8-raise # One simple fix
     "RET",  # flake8-return
