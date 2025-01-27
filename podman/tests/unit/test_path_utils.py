@@ -33,6 +33,13 @@ class PathUtilsTestCase(unittest.TestCase):
             self.skipTest('XDG_RUNTIME_DIR must be set to fetch a working dir.')
         self.assertNotEqual(self.xdg_runtime_dir, api.path_utils.get_runtime_dir())
 
+    @mock.patch.dict(os.environ, clear=True)
+    def test_get_xdg_config_home_env_var_not_set(self):
+        """Fake taht XDG_RUNTIME_DIR is not set"""
+        self.assertEqual(
+            os.path.join(os.path.expanduser('~'), '.config'), api.path_utils.get_xdg_config_home()
+        )
 
-if __name__ == '__main__':
-    unittest.main()
+
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()  # pragma: no cover
