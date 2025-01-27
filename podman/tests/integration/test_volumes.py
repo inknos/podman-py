@@ -45,5 +45,5 @@ class VolumesIntegrationTest(base.IntegrationTest):
             self.client.volumes.get("NoSuchVolume")
 
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()  # pragma: no cover

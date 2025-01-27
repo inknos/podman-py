@@ -403,5 +403,5 @@ class ContainersIntegrationTest(base.IntegrationTest):
                     self.assertIn(expected_output, logs)
 
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()  # pragma: no cover

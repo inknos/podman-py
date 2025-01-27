@@ -48,5 +48,5 @@ class SecretsIntegrationTest(base.IntegrationTest):
                 self.client.secrets.get(secret.id)
 
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()  # pragma: no cover
