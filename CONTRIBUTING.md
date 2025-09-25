@@ -84,6 +84,41 @@ tox -e py -- --pnext -m pnext podman/tests/integration/test_container_create.py 
 The option `--pnext` **enables** the tests with the `pnext` pytest marker, and `-m pnext` will run
 the marked tests **only**.
 
+#### Testing version-specific or distro-specific scenarios
+
+Tests can be conditionally skipped based on `podman`'s version or on the host
+that's running the test suite.
+
+```python
+from podman.tests.utils import OS_RELEASE, PODMAN_VERSION
+
+
+@pytest.mark.skipif(
+    PODMAN_VERSION < (5, 6, 0),
+    reason="Feature introduced in Podman 5.6.0 https://github.com/...",
+)
+@pytest.mark.skipif(
+    OS_RELEASE["ID"] == "fedora" and int(OS_RELEASE["VERSION_ID"]) < 42,
+    reason="Feature patched in F42 or later https://github.com/...",
+)
+```
+
+#### Common test issues
+
+Tests work by establishing a ssh connection with localhost. If you see
+this line repeating after launching tox you might need to fix your ssh to be
+able to connect locally.
+
+```log
+...
+2025-09-25 13:20:44 [   DEBUG] Waiting on /run/user/1000/podman/podman-forward-a65fd89525a248608d4c.sock (ssh.py:89)
+2025-09-25 13:20:44 [   DEBUG] Waiting on /run/user/1000/podman/podman-forward-a65fd89525a248608d4c.sock (ssh.py:89)
+...
+```
+
+Most of the times, if you can run `ssh localhost exit` successfully your tests
+ will run.
+
 ## Submitting changes
 
 - Create a github pull request (PR)
